@@ -1,0 +1,10 @@
+gtest
+*idea*
+CMakeCache.txt
+CMakeFiles
+Makefile
+*.cbp
+bin/
+cmake-build*
+cmake_install*
+
