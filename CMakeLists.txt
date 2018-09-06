@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION 3.3)
 
-project(Utili)
+project(Offer)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+IF (WIN64)
+    MESSAGE(STATUS "Now is windows")
+ELSEIF (APPLE)
+    MESSAGE(STATUS "Now is Apple systens.")
+ELSEIF (UNIX)
+    MESSAGE(STATUS "Now is UNIX-like OS's.")
+ENDIF ()
 
 aux_source_directory(${PROJECT_SOURCE_DIR}/include INCLUDE_FILES)
 aux_source_directory(${PROJECT_SOURCE_DIR}/src SOURCE_FILES)
