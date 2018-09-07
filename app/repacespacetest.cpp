@@ -5,6 +5,7 @@
 #include <gtest/gtest.h>
 #include "replacespace.h"
 #include "onenumber.h"
+#include "fibonacci.h"
 
 TEST(test, repacesapce)
 {
@@ -28,6 +29,14 @@ TEST(test, power)
     EXPECT_EQ(4, Power::power(2, 2));
     EXPECT_EQ(0.25, Power::power(2, -2));
     EXPECT_EQ(-8, Power::power(-2, 3));
+}
+
+TEST(test, fibonacci)
+{
+    EXPECT_EQ(2, Fibonacci::fibonacci(3));
+    EXPECT_EQ(3, Fibonacci::fibonacci(4));
+    EXPECT_EQ(5, Fibonacci::fibonacci(5));
+    EXPECT_EQ(8, Fibonacci::fibonacci(6));
 }
 
 GTEST_API_ int main(int argc, char **argv) {
