@@ -31,3 +31,4 @@ ADD_EXECUTABLE(threadpool  app/simplethreadtest.cpp ${INCLUDE_FILES} ${SOURCE_FI
 ADD_EXECUTABLE(singleton  app/singletontest.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
 ADD_EXECUTABLE(arrayfind  app/arrayfindtest.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
 ADD_EXECUTABLE(repacespace  app/repacespacetest.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
+ADD_EXECUTABLE(link  app/link.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
