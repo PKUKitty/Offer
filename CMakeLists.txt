@@ -12,6 +12,15 @@ ELSEIF (UNIX)
     MESSAGE(STATUS "Now is UNIX-like OS's.")
 ENDIF ()
 
+INCLUDE(CheckIncludeFiles)
+CHECK_INCLUDE_FILES(gtest.h HAVE_GTEST_INCLUDE_FILE)
+
+include(CheckLibraryExists)
+CHECK_LIBRARY_EXISTS(gtest TEST "" HAVE_GTEST)
+IF(HAVE_GTEST)
+    MESSAGE(INFO ${HAVE_GTEST})
+ENDIF()
+
 aux_source_directory(${PROJECT_SOURCE_DIR}/include INCLUDE_FILES)
 aux_source_directory(${PROJECT_SOURCE_DIR}/src SOURCE_FILES)
 
