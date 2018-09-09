@@ -25,7 +25,7 @@ struct Node
   }
 };
 
-class DelLinkNode
+class Link
 {
  public:
 
@@ -60,6 +60,25 @@ class DelLinkNode
     }
     return head;
   }
+
+  static Node* reverseList(Node* head)
+  {
+    Node* reverseNode = nullptr;
+    Node* currNode = head;
+    Node* preNode = nullptr;
+    Node* nextNode = nullptr;
+
+    while (currNode != nullptr)
+    {
+      reverseNode = currNode;
+      nextNode = currNode->next;
+      currNode->next = preNode;
+      preNode = currNode;
+      currNode = nextNode;
+    }
+    return reverseNode;
+  }
+
 
   /**
    * @brief
