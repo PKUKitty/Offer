@@ -29,6 +29,42 @@ class Link
 {
  public:
 
+    /**
+     * find the Kth node from tail
+     * @param head
+     * @param k
+     * @return
+     */
+    static Node* findKthToTail(Node* head, int k)
+    {
+      if(head == nullptr || k < 1)
+      {
+        return nullptr;
+      }
+
+      Node* pointer = head;
+
+      for(int i = 1; i < k; ++i)
+      {
+        if(pointer->next != nullptr)
+        {
+          pointer = pointer->next;
+        }
+        else
+        {
+          return nullptr;
+        }
+      }
+
+      while (pointer->next != nullptr)
+      {
+          head = head->next;
+          pointer = pointer->next;
+      }
+      return head;
+    }
+
+
   static Node* deleteNode(Node* head, Node* toBeDelete)
   {
     //head ,  to be delete node is null

@@ -30,6 +30,9 @@ TEST(link, link_function)
   Link::printLink(head);
   EXPECT_EQ(4, head->value);
 
+  Node* KthToTail = Link::findKthToTail(head, 2);
+  EXPECT_EQ(3, KthToTail->value);
+
 }
 
 struct db_airline

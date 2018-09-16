@@ -12,14 +12,14 @@ ELSEIF (UNIX)
     MESSAGE(STATUS "Now is UNIX-like OS's.")
 ENDIF ()
 
-INCLUDE(CheckIncludeFiles)
-CHECK_INCLUDE_FILES(gtest.h HAVE_GTEST_INCLUDE_FILE)
-
-include(CheckLibraryExists)
-CHECK_LIBRARY_EXISTS(gtest TEST "" HAVE_GTEST)
-IF(HAVE_GTEST)
-    MESSAGE(INFO ${HAVE_GTEST})
-ENDIF()
+#INCLUDE(CheckIncludeFiles)
+#CHECK_INCLUDE_FILES(gtest.h HAVE_GTEST_INCLUDE_FILE)
+#
+#include(CheckLibraryExists)
+#CHECK_LIBRARY_EXISTS(gtest TEST "" HAVE_GTEST)
+#IF(HAVE_GTEST)
+#    MESSAGE(INFO ${HAVE_GTEST})
+#ENDIF()
 
 aux_source_directory(${PROJECT_SOURCE_DIR}/include INCLUDE_FILES)
 aux_source_directory(${PROJECT_SOURCE_DIR}/src SOURCE_FILES)
@@ -41,3 +41,4 @@ ADD_EXECUTABLE(singleton  app/singletontest.cpp ${INCLUDE_FILES} ${SOURCE_FILES}
 ADD_EXECUTABLE(arrayfind  app/arrayfindtest.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
 ADD_EXECUTABLE(repacespace  app/repacespacetest.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
 ADD_EXECUTABLE(link  app/link.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
+ADD_EXECUTABLE(minstack app/minstack.cpp ${INCLUDE_FILES} ${SOURCE_FILES} include/minstack.h)
