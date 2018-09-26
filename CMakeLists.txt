@@ -43,3 +43,5 @@ ADD_EXECUTABLE(repacespace  app/repacespacetest.cpp ${INCLUDE_FILES} ${SOURCE_FI
 ADD_EXECUTABLE(link  app/link.cpp ${INCLUDE_FILES} ${SOURCE_FILES})
 ADD_EXECUTABLE(minstack app/minstack.cpp ${INCLUDE_FILES} ${SOURCE_FILES} include/minstack.h)
 ADD_EXECUTABLE(binarytree app/binarytree.cpp ${INCLUDE_FILES} ${SOURCE_FILES} include/binarytree.h)
+ADD_EXECUTABLE(hwt app/wheeltimer.cpp ${INCLUDE_FILES} ${SOURCE_FILES} include/hashwheeltimer.h)
+ADD_EXECUTABLE(sort app/sorttest.cpp ${INCLUDE_FILES} ${SOURCE_FILES} include/sort.h)
