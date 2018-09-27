@@ -69,7 +69,19 @@ public:
 
     static void quickSort(TT* array, int left, int right)
     {
-        
+        if(!array)
+        {
+          return;
+        }
+
+        if(left >= right)
+        {
+            return;
+        }
+
+        int idx = partSort(array, left, right);
+        quickSort(array, left, idx-1);
+        quickSort(array, idx+1, right);
     }
 
 
@@ -81,6 +93,27 @@ private:
         a = b;
         b = c;
     }
+
+    static int partSort(TT* array, int left, int right)
+    {
+        TT& key = array[right];
+        while (left < right)
+        {
+          while (left < right && array[left] <= key)
+          {
+            ++left;
+          }
+
+          while (left < right && array[right] >= key)
+          {
+            --right;
+          }
+          swap(array[left], array[right]);
+        }
+        swap(array[left], key);
+        return left;
+    }
+
 };
 
 #endif //OFFER_SORT_H
