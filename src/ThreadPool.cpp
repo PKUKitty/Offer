@@ -8,18 +8,23 @@
  * @version 1.0
  * @date 8/23/18 
  **/
+#include <iostream>
 #include "ThreadPool.h"
 
 ThreadPool::ThreadPool(unsigned nThreadNums) : m_bIsRunning(false), m_mutex(), m_nTaskNum(0)
 {
   // set thread num correctly. [MIN_THREAD_NUMS, MAX_THREAD_NUMS]
-  if (nThreadNums < MIN_THREAD_NUMS || nThreadNums > MAX_THREAD_NUMS)
+  unsigned cpuNums = std::thread::hardware_concurrency();
+  std::cout << "cpu nums: " << cpuNums << std::endl;
+  if (nThreadNums < MIN_THREAD_NUMS || nThreadNums > cpuNums)
   {
     m_nThreadNum = MIN_THREAD_NUMS;
   } else
   {
     m_nThreadNum = nThreadNums;
   }
+
+  start();
 }
 
 ThreadPool::~ThreadPool()

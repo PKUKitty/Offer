@@ -20,8 +20,8 @@
 
 /**
  * @brief thread pool base on C++11 thread
- * usage: ThreadPool threadPool(4);
- *        threadPool.start();
+ * usage: ThreadPool threadPool(4); start thread pool in constructor
+ *        //threadPool.start();
  *        threadPool.append(std::bind(***)); // bind the task function
  *        threadPool.waitAll();
  *        threadPool.stop();
@@ -37,7 +37,7 @@ class ThreadPool {
   /**
    * @brief initial thread nums.
    *        default is MIN_THREAD_NUMS(4), if input < min or > max, set MIN_THREAD_NUMS
-   * @param nThreadNums input nums. [4,16]
+   * @param nThreadNums input nums. [2, hard cpu num]
    */
   explicit ThreadPool(unsigned nThreadNums = ThreadPool::MIN_THREAD_NUMS);
 
@@ -91,8 +91,8 @@ class ThreadPool {
   void work();
 
  private:
-  static const unsigned MIN_THREAD_NUMS = 4;
-  static const unsigned MAX_THREAD_NUMS = 16;
+  static const unsigned MIN_THREAD_NUMS = 2;
+//  static const unsigned MAX_THREAD_NUMS = 16;
   //thread pool running status
   bool m_bIsRunning;
   //thread pool thread num
