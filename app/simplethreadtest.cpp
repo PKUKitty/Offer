@@ -11,8 +11,12 @@ class SetAv
  public:
     void setAv(int& idx)
     {
-      ++idx;
-      std::cout <<"pid"<<getpid()<< "set av: " << idx << std::endl;
+        std::mutex m_mutex;
+        m_mutex.lock();
+        sleep(0.1);
+        idx = idx + 1;
+        std::cout << "set av: " << idx << std::endl;
+        m_mutex.unlock();
     }
 };
 
@@ -24,11 +28,14 @@ TEST(test, thread_pool_test)
     int idx=0;
     ThreadPool threadPool(4);
     threadPool.start();
-    threadPool.append(std::bind(&SetAv::setAv, sa, std::ref(idx))); // bind the task function
+    for(int i =0; i < 100; ++i)
+    {
+        threadPool.append(std::bind(&SetAv::setAv, sa, std::ref(idx))); // bind the task function
+    }
     threadPool.waitAll();
     threadPool.stop();
     //waitAll() and stop() functions also are called by destructor
-    EXPECT_EQ(idx, 5);
+    EXPECT_EQ(idx, 100);
 }
 
 TEST(test, test_tuple)

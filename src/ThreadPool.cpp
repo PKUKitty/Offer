@@ -15,15 +15,14 @@ ThreadPool::ThreadPool(unsigned nThreadNums) : m_bIsRunning(false), m_mutex(), m
 {
   // set thread num correctly. [MIN_THREAD_NUMS, MAX_THREAD_NUMS]
   unsigned cpuNums = std::thread::hardware_concurrency();
-  std::cout << "cpu nums: " << cpuNums << std::endl;
   if (nThreadNums < MIN_THREAD_NUMS || nThreadNums > cpuNums)
   {
     m_nThreadNum = MIN_THREAD_NUMS;
-  } else
+  }
+  else
   {
     m_nThreadNum = nThreadNums;
   }
-
   start();
 }
 
@@ -138,6 +137,7 @@ void ThreadPool::work()
     if (task)
     {
       task();
+      std::cout <<"[worker::worker] id: " << std::this_thread::get_id() << " do working!" << std::endl;
       //finish status
       {
         std::unique_lock<std::mutex> locker(m_mutex);
