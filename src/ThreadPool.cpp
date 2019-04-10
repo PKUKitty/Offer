@@ -44,6 +44,10 @@ void ThreadPool::append(const ThreadPool::Task& task)
     // if have waiting status thread, it will do the worker.
     // else do nothing, just push back.
     std::unique_lock<std::mutex> locker(m_mutex);
+    if (m_nTaskNum > UINT32_MAX)
+    {
+      return;
+    }
     ++m_nTaskNum;
     m_tasks.push_back(task);
     m_taskCond.notify_one();

@@ -10,6 +10,7 @@ TEST(test, arrayfind) {
 
     std::vector<int> arr = {1, 2, 3};
     std::vector<int> arr2 = {4, 5, 6};
+    std::vector<int> arr3 = {1, 3, 5, 7};
 
     std::vector<std::vector<int>> array;
     array.push_back(arr);
@@ -17,6 +18,9 @@ TEST(test, arrayfind) {
 
     EXPECT_EQ(true, ArrayFind::find(array, 3));
     EXPECT_EQ(false, ArrayFind::find(array, 7));
+
+    std::vector<int> res = {0, 1};
+    EXPECT_EQ(res, ArrayFind::twoSum(arr3, 4));
 }
 
 GTEST_API_ int main(int argc, char **argv) {
